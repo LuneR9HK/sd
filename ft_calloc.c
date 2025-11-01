@@ -15,28 +15,34 @@
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	unsigned char	*tab;
+	unsigned char	*ptr;
 
 	if ((nmemb == 0) || (size == 0))
-		return (malloc(0));
+	{
+		ptr = malloc(0);
+		if (!ptr)
+			return (NULL);
+		return (ptr);
+	}
 	if (!size && (nmemb * size) / size != nmemb)
 		return (NULL);
 	tab = malloc(nmemb * size);
 	if (tab != NULL)
-		ft_bzero(tab, size);
+		ft_bzero(tab, size * nmemb);
 	return (tab);
 }
-/*
-#include <stdio.h>
+
+/*#include <stdio.h>
 int	main()
 {
-	char	*res = ft_calloc(0, sizeof(char));
-	char	*res1 = calloc(0, sizeof(char));
+	char	*res = ft_calloc(52, sizeof(char));
+	//char	*res1 = calloc(0, sizeof(char));
 		
 	res	= "dsadas";
-	res1 = "qweqweq";
+	//res1 = "qweqweq";
 	printf("%s\n", res);
-	printf("%s\n", res1);
-	free(res1);
+	//printf("%s\n", res1);
+	//free(res1);
 	free(res);
 	return (0);
 }*/

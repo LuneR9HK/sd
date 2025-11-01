@@ -22,5 +22,18 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)&s[i]);
 		i++;
 	}
+	if (s[i] == c)
+		return ((char *)&s[i]);
 	return (NULL);
 }
+
+// #include <stdio.h>
+// 
+// int	main()
+// {
+	// char	*s = "suprapatata\0vttiX";
+	// char	*res;
+	// res = ft_strchr(s, '\0');
+	// printf("%s", res);
+	// return 0;
+// }

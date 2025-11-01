@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -19,34 +20,32 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	i = 0;
 	if (little[0] == '\0')
 		return ((char *)big);
-	while (*big && i < len)
+	while ((big[i]) && (i < len))
 	{
 		j = 0;
-		while (big[j] == little[j])
+		while ((big[i] == little[j]) && (i < len))
 		{
+			i++;
 			j++;
 			if (little[j] == '\0')
-				return ((char *)big);
+				return ((char *)&big[i - j]);
 		}
-		big++;
 		i++;
 	}
 	return (NULL);
 }
-/*
+
 #include <bsd/string.h>
 #include <stdlib.h>
 #include <stdio.h>
-int	main(int argc, char **argv)
+int	main(void)
 {
-	(void)argc;
 	char *str;
-
-	str = (char *)strnstr(argv[1], argv[2], atoi(argv[3]));
-
-	printf("%s\n", (char *)ft_strnstr(argv[1], argv[2], atoi(argv[3])));
-
-	printf("%s\n", str);
+	char *big = "supravim n'est pas un IDE";
+	char *little = "vim";
+	
+	str = ft_strnstr(big, little, 8);
+	
+	printf("%s", str);
 	return (0);
 }
-*/
